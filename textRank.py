@@ -201,21 +201,34 @@ class TextRank:
 
 
 
+# from firebase import firebase
+# firebase = firebase.FirebaseApplication('https://chatbot-c6606.firebaseio.com')
 
 
-for i in range(1, 6):
+for i in range(1, 7):
     tr = TextRank()
-    print('Load...')
+    # print('Load...')
     from konlpy.tag import Komoran
-
     tagger = Komoran()
     stopword = set([('있', 'VV'), ('하', 'VV'), ('되', 'VV'), ('【서울=뉴시스】', 'VV'),('이에 따라', 'VV'), ('그러나', 'VV')])
     tr.loadSents(RawSentenceReader("text{0}.txt".format(i)), lambda sent: filter(lambda x: x not in stopword and x[1] in ('NNG', 'NNP', 'VV', 'VA'),
-                                                     tagger.pos(sent)))
-    print('Build...')
+                                                                                 tagger.pos(sent)))
+    # print('Build...')
     tr.build()
     ranks = tr.rank()
-    for k in sorted(ranks, key=ranks.get, reverse=True)[:100]:
-        print("\t".join([str(k), str(ranks[k]), str(tr.dictCount[k])]))
-    print(tr.summarize(0.1))
-
+    # for k in sorted(ranks, key=ranks.get, reverse=True)[:100]:
+    #      print("\t".join([str(k), str(ranks[k]), str(tr.dictCount[k])]))
+    # print(tr.summarize(0.1))
+    if i == 1:
+        politic = tr.summarize(0.1)
+    elif i == 2:
+        economy = tr.summarize(0.1)
+    elif i == 3:
+        social = tr.summarize(0.1)
+    elif i == 4:
+        culture = tr.summarize(0.1)
+    elif i == 5:
+        world = tr.summarize(0.1)
+    elif i == 6:
+        IT = tr.summarize(0.1)
+    # firebase.post('/', {'text{0}'.format(i): tr.summarize(0.1)})

@@ -1,6 +1,8 @@
 from __future__ import print_function
 from lexrankr import LexRank
 
+# 이거 아님
+
 lexrank = LexRank()  # can init with various settings
 lexrank.summarize('''
 경찰이 잠실야구장에서 벌어진 '현대판 노예사건'에 대해 본격 수사에 착수했다. 앞서 서울시장애인인권센터는 이곳 분리수거장에서 A씨(60)를 구조하고, 그가 임금을 받지 못한 채 노예처럼 일해온 것으로 추정된다며 수사를 의뢰했다.
@@ -18,3 +20,9 @@ lexrank.summarize('''
 summaries = lexrank.probe(1)  # `num_summaries` can be `None` (using auto-detected topics)
 for summary in summaries: # 그냥 출력
     print(summary)
+
+from firebase import firebase
+firebase = firebase.FirebaseApplication('https://chatbot-c6606.firebaseio.com')
+
+result = firebase.post('/',{'news':summary})
+print(result)

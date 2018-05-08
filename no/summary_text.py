@@ -1,6 +1,8 @@
 from __future__ import print_function
 from textrankr import TextRank
 
+# 이거 아님
+
 textrank = TextRank('''
 육아의 필수품이 된 물티슈가 알레르기의 원인이 될 수 있다는 연구 결과가 나왔다.
 
