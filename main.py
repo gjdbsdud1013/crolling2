@@ -36,9 +36,9 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     zone = parameters.get("news_category")
 
-    cost = {'정치':textRank.politic + '\n' + test.politic_link,'경제':textRank.economy + '\n' + test.economy_link,
-            '사회':textRank.social + '\n' + test.social_link, '문화':textRank.culture + '\n' + test.culture_link,
-            '세계':textRank.world + '\n' + test.world_link, '아이티':textRank.IT + '\n' + test.IT_link}
+    cost = {'정치':test.politic_link + '\n\n요약 문장: ' + textRank.politic,'경제':test.economy_link + '\n\n요약 문장: ' + textRank.economy,
+            '사회':test.social_link + '\n\n요약 문장: ' + textRank.social, '문화':test.culture_link + '\n\n요약 문장: ' + textRank.culture,
+            '세계':test.world_link + '\n\n요약 문장: ' + textRank.world, '아이티':test.IT_link + '\n\n요약 문장: ' + textRank.IT}
 
     speech = cost[zone]
     print("Response:")

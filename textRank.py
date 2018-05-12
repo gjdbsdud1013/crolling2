@@ -218,17 +218,17 @@ for i in range(1, 7):
     ranks = tr.rank()
     # for k in sorted(ranks, key=ranks.get, reverse=True)[:100]:
     #      print("\t".join([str(k), str(ranks[k]), str(tr.dictCount[k])]))
-    # print(tr.summarize(0.1))
+    print(tr.summarize(0.2))
     if i == 1:
-        politic = tr.summarize(0.1)
+        politic = tr.summarize(0.2)
     elif i == 2:
-        economy = tr.summarize(0.1)
+        economy = tr.summarize(0.2)
     elif i == 3:
-        social = tr.summarize(0.1)
+        social = tr.summarize(0.2)
     elif i == 4:
-        culture = tr.summarize(0.1)
+        culture = tr.summarize(0.2)
     elif i == 5:
-        world = tr.summarize(0.1)
+        world = tr.summarize(0.2)
     elif i == 6:
-        IT = tr.summarize(0.1)
+        IT = tr.summarize(0.2)
     # firebase.post('/', {'text{0}'.format(i): tr.summarize(0.1)})
