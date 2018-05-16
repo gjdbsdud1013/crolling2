@@ -6,8 +6,10 @@ import os
 from flask import Flask
 from flask import request
 from flask import make_response
+import crolling
 import textRank
-import test
+import crolling_issue
+from random import *
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -29,26 +31,49 @@ def webhook():
 
 def makeWebhookResult(req):
     print("starting processRequest...", req.get("result").get("action"))
-    if req.get("result").get("action") != "newsnews": # action으로 구분, action 여러가지 할때 이거 쓰기
-        return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone = parameters.get("news_category")
+    if req.get("result").get("action") == "newsnews":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        zone = parameters.get("news_category")
+        num = randint(1,5)
 
-    cost = {'정치':'🔽 주요 내용\n' + textRank.politic + '\n\n' + test.politic_link,'경제':'🔽 주요 내용\n' + textRank.economy + '\n\n' + test.economy_link,
-            '사회':'🔽 주요 내용\n' + textRank.social + '\n\n' + test.social_link, '문화':'🔽 주요 내용\n' + textRank.culture + '\n\n' + test.culture_link,
-            '세계':'🔽 주요 내용\n' + textRank.world + '\n\n' + test.world_link, '아이티':'🔽 주요 내용\n' + textRank.IT + '\n\n' + test.IT_link}
-    #
-    # cost = {'정치':test.politic_link + '\n\n🔽 주요 내용\n' + textRank.politic,'경제':test.economy_link + '\n\n🔽 주요 내용\n' + textRank.economy,
-    #         '사회':test.social_link + '\n\n🔽 주요 내용\n' + textRank.social, '문화':test.culture_link + '\n\n🔽 주요 내용\n' + textRank.culture,
-    #         '세계':test.world_link + '\n\n🔽 주요 내용\n' + textRank.world, '아이티':test.IT_link + '\n\n🔽 주요 내용\n' + textRank.IT}
+        cost = {'정치':{1: crolling.politic_link1 + '@요약문장 ▶' + textRank.politic1,
+                      2: crolling.politic_link2 + '@요약문장 ▶' + textRank.politic2,
+                      3: crolling.politic_link3 + '@요약문장 ▶' + textRank.politic3,
+                      4: crolling.politic_link4 + '@요약문장 ▶' + textRank.politic4,
+                      5: crolling.politic_link5 + '@요약문장 ▶' + textRank.politic5},
+                '경제':{1: crolling.economy_link1 + '@요약문장 ▶' + textRank.economy1,
+                      2: crolling.economy_link2 + '@요약문장 ▶' + textRank.economy2,
+                      3: crolling.economy_link3 + '@요약문장 ▶' + textRank.economy3,
+                      4: crolling.economy_link4 + '@요약문장 ▶' + textRank.economy4,
+                      5: crolling.economy_link5 + '@요약문장 ▶' + textRank.economy5},
+                '문화': {1: crolling.culture_link1 + '@요약문장 ▶' + textRank.culture1,
+                       2: crolling.culture_link2 + '@요약문장 ▶' + textRank.culture2,
+                       3: crolling.culture_link3 + '@요약문장 ▶' + textRank.culture3,
+                       4: crolling.culture_link4 + '@요약문장 ▶' + textRank.culture4,
+                       5: crolling.culture_link5 + '@요약문장 ▶' + textRank.culture5},
+                '세계':{1: crolling.world_link1 + '@요약문장 ▶' + textRank.world1,
+                      2: crolling.world_link2 + '@요약문장 ▶' + textRank.world2,
+                      3: crolling.world_link3 + '@요약문장 ▶' + textRank.world3,
+                      4: crolling.world_link4 + '@요약문장 ▶' + textRank.world4,
+                      5: crolling.world_link5 + '@요약문장 ▶' + textRank.world5},
+                '사회': {1: crolling.social_link1 + '@요약문장 ▶' + textRank.social1,
+                       2: crolling.social_link2 + '@요약문장 ▶' + textRank.social2,
+                       3: crolling.social_link3 + '@요약문장 ▶' + textRank.social3,
+                       4: crolling.social_link4 + '@요약문장 ▶' + textRank.social4,
+                       5: crolling.social_link5 + '@요약문장 ▶' + textRank.social5},
+                '아이티': {1: crolling.IT_link1 + '@요약문장 ▶' + textRank.IT1,
+                       2: crolling.IT_link2 + '@요약문장 ▶' + textRank.IT2,
+                       3: crolling.IT_link3 + '@요약문장 ▶' + textRank.IT3,
+                       4: crolling.IT_link4 + '@요약문장 ▶' + textRank.IT4,
+                       5: crolling.IT_link5 + '@요약문장 ▶' + textRank.IT5}}
 
-    # cost = {'정치':test.politic_link,'경제':test.economy_link,
-    #         '사회':test.social_link, '문화':test.culture_link,
-    #         '세계':test.world_link, '아이티':test.IT_link}
-    #
+        speech = cost[zone][num]
+        if speech[-1] == '▶' : speech = "죄송해요. 다시 한 번 말씀해주세요. 😢@null"
+    elif req.get("result").get("action") == "issueissue":
+        speech = "오늘의 실시간 이슈는 " + ', '.join(crolling_issue.issue) + "입니다. 😊💓@null"
+    else: return{}
 
-    speech = cost[zone]
     print("Response:")
     print(speech)
     return {
@@ -56,7 +81,7 @@ def makeWebhookResult(req):
         "displayText": speech,
         #"data": {},
         #"contextOut": [],
-        "source": "Newscategory"
+        "source": "Newssenger"
     }
 
 @app.route('/static_reply', methods=['POST'])

@@ -205,30 +205,114 @@ class TextRank:
 # firebase = firebase.FirebaseApplication('https://chatbot-c6606.firebaseio.com')
 
 
-for i in range(1, 7):
-    tr = TextRank()
-    # print('Load...')
-    from konlpy.tag import Komoran
-    tagger = Komoran()
-    stopword = set([('있', 'VV'), ('하', 'VV'), ('되', 'VV'), ('【서울=뉴시스】', 'VV'),('이에 따라', 'VV'), ('그러나', 'VV')])
-    tr.loadSents(RawSentenceReader("text{0}.txt".format(i)), lambda sent: filter(lambda x: x not in stopword and x[1] in ('NNG', 'NNP', 'VV', 'VA'),
-                                                                                 tagger.pos(sent)))
-    # print('Build...')
-    tr.build()
-    ranks = tr.rank()
-    # for k in sorted(ranks, key=ranks.get, reverse=True)[:100]:
-    #      print("\t".join([str(k), str(ranks[k]), str(tr.dictCount[k])]))
-    print(tr.summarize(0.2))
-    if i == 1:
-        politic = tr.summarize(0.2)
-    elif i == 2:
-        economy = tr.summarize(0.2)
-    elif i == 3:
-        social = tr.summarize(0.2)
-    elif i == 4:
-        culture = tr.summarize(0.2)
-    elif i == 5:
-        world = tr.summarize(0.2)
-    elif i == 6:
-        IT = tr.summarize(0.2)
-    # firebase.post('/', {'text{0}'.format(i): tr.summarize(0.1)})
+for j in range(1, 6):
+    for i in range(1, 7):
+        tr = TextRank()
+        # print('Load...')
+        from konlpy.tag import Komoran
+        tagger = Komoran()
+        stopword = set([('있', 'VV'), ('하', 'VV'), ('되', 'VV'), ('【서울=뉴시스】', 'VV'),('이에 따라', 'VV'), ('그러나', 'VV')])
+        tr.loadSents(RawSentenceReader("C:\\Users\\Honeyoon\\PycharmProjects\\crolling2\\textfile\\lank{0}-{1}.txt".format(j,i)), lambda sent: filter(lambda x: x not in stopword and x[1] in ('NNG', 'NNP', 'VV', 'VA'),
+                                                                                     tagger.pos(sent)))
+        # print('Build...')
+        tr.build()
+        ranks = tr.rank()
+        # for k in sorted(ranks, key=ranks.get, reverse=True)[:100]:
+        #      print("\t".join([str(k), str(ranks[k]), str(tr.dictCount[k])]))
+        if j == 1:
+            if i == 1:
+                politic1 = tr.summarize(0.2)
+                print(politic1)
+            elif i == 2:
+                economy1 = tr.summarize(0.2)
+                print(economy1)
+            elif i == 3:
+                social1 = tr.summarize(0.2)
+                print(social1)
+            elif i == 4:
+                culture1 = tr.summarize(0.2)
+                print(culture1)
+            elif i == 5:
+                world1 = tr.summarize(0.2)
+                print(world1)
+            elif i == 6:
+                IT1 = tr.summarize(0.2)
+                print(IT1)
+        if j == 2:
+            if i == 1:
+                politic2 = tr.summarize(0.2)
+                print(politic2)
+            elif i == 2:
+                economy2 = tr.summarize(0.2)
+                print(economy2)
+            elif i == 3:
+                social2 = tr.summarize(0.2)
+                print(social2)
+            elif i == 4:
+                culture2 = tr.summarize(0.2)
+                print(culture2)
+            elif i == 5:
+                world2 = tr.summarize(0.2)
+                print(world2)
+            elif i == 6:
+                IT2 = tr.summarize(0.2)
+                print(IT2)
+        if j == 3:
+            if i == 1:
+                politic3 = tr.summarize(0.2)
+                print(politic3)
+            elif i == 2:
+                economy3 = tr.summarize(0.2)
+                print(economy3)
+            elif i == 3:
+                social3 = tr.summarize(0.2)
+                print(social3)
+            elif i == 4:
+                culture3 = tr.summarize(0.2)
+                print(culture3)
+            elif i == 5:
+                world3 = tr.summarize(0.2)
+                print(world3)
+            elif i == 6:
+                IT3 = tr.summarize(0.2)
+                print(IT3)
+        if j == 4:
+            if i == 1:
+                politic4 = tr.summarize(0.2)
+                print(politic4)
+            elif i == 2:
+                economy4 = tr.summarize(0.2)
+                print(economy4)
+            elif i == 3:
+                social4 = tr.summarize(0.2)
+                print(social4)
+            elif i == 4:
+                culture4 = tr.summarize(0.2)
+                print(culture4)
+            elif i == 5:
+                world4 = tr.summarize(0.2)
+                print(world4)
+            elif i == 6:
+                IT4 = tr.summarize(0.2)
+                print(IT4)
+        if j == 5:
+            if i == 1:
+                politic5 = tr.summarize(0.2)
+                print(politic5)
+            elif i == 2:
+                economy5 = tr.summarize(0.2)
+                print(economy5)
+            elif i == 3:
+                social5 = tr.summarize(0.2)
+                print(social5)
+            elif i == 4:
+                culture5 = tr.summarize(0.2)
+                print(culture5)
+            elif i == 5:
+                world5 = tr.summarize(0.2)
+                print(world5)
+            elif i == 6:
+                IT5 = tr.summarize(0.2)
+                print(IT5)
+
+        # firebase.post('/', {'text{0}'.format(i): tr.summarize(0.1)})
