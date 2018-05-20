@@ -200,9 +200,6 @@ class TextRank:
 
 
 
-# from firebase import firebase
-# firebase = firebase.FirebaseApplication('https://chatbot-c6606.firebaseio.com')
-
 
 for j in range(1, 6):
     for i in range(1, 7):
