@@ -14,7 +14,7 @@ link_list3 = soup.find_all('li', class_='num3')
 link_list4 = soup.find_all('li', class_='num4')
 link_list5 = soup.find_all('li', class_='num5')
 count = 1
-
+politic_link1, economy_link1, social_link1, culture_link1, world_link1, IT_link1 = ''
 
 for list in link_list1[:6]: # lank1
     link="http://news.naver.com/"+list.find('a').get('href') #

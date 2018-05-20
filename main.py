@@ -13,6 +13,16 @@ from random import *
 
 # Flask app should start in global layout
 app = Flask(__name__)
+from firebase import firebase
+
+# firebase database for android push
+firebase = firebase.FirebaseApplication('https://chat-9892b.firebaseio.com/')
+firebase.put('news', '1', {'link': crolling.politic_link1, 'summary': textRank.politic1})
+firebase.put('news', '2', {'link': crolling.economy_link1, 'summary': textRank.economy1})
+firebase.put('news', '3', {'link': crolling.social_link1, 'summary': textRank.social1})
+firebase.put('news', '4', {'link': crolling.culture_link1, 'summary': textRank.culture1})
+firebase.put('news', '5', {'link': crolling.world_link1, 'summary': textRank.world1})
+firebase.put('news', '6', {'link': crolling.IT_link1, 'summary': textRank.IT1})
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -101,7 +111,6 @@ def static_reply():
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 80))
-
     print ("Starting app on port %d" %(port))
-
     app.run(debug=True, port=port, host='0.0.0.0')
+

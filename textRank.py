@@ -2,7 +2,6 @@
 import networkx
 import re
 
-
 class RawSentence:
     def __init__(self, textIter):
         if type(textIter) == str:
@@ -219,100 +218,99 @@ for j in range(1, 6):
         ranks = tr.rank()
         # for k in sorted(ranks, key=ranks.get, reverse=True)[:100]:
         #      print("\t".join([str(k), str(ranks[k]), str(tr.dictCount[k])]))
+        result = tr.summarize(0.2)
         if j == 1:
             if i == 1:
-                politic1 = tr.summarize(0.2)
+                politic1 = result
                 print(politic1)
             elif i == 2:
-                economy1 = tr.summarize(0.2)
+                economy1 = result
                 print(economy1)
             elif i == 3:
-                social1 = tr.summarize(0.2)
+                social1 = result
                 print(social1)
             elif i == 4:
-                culture1 = tr.summarize(0.2)
+                culture1 = result
                 print(culture1)
             elif i == 5:
-                world1 = tr.summarize(0.2)
+                world1 = result
                 print(world1)
             elif i == 6:
-                IT1 = tr.summarize(0.2)
+                IT1 = result
                 print(IT1)
         if j == 2:
             if i == 1:
-                politic2 = tr.summarize(0.2)
+                politic2 = result
                 print(politic2)
             elif i == 2:
-                economy2 = tr.summarize(0.2)
+                economy2 = result
                 print(economy2)
             elif i == 3:
-                social2 = tr.summarize(0.2)
+                social2 = result
                 print(social2)
             elif i == 4:
-                culture2 = tr.summarize(0.2)
+                culture2 = result
                 print(culture2)
             elif i == 5:
-                world2 = tr.summarize(0.2)
+                world2 = result
                 print(world2)
             elif i == 6:
-                IT2 = tr.summarize(0.2)
+                IT2 = result
                 print(IT2)
         if j == 3:
             if i == 1:
-                politic3 = tr.summarize(0.2)
+                politic3 = result
                 print(politic3)
             elif i == 2:
-                economy3 = tr.summarize(0.2)
+                economy3 = result
                 print(economy3)
             elif i == 3:
-                social3 = tr.summarize(0.2)
+                social3 = result
                 print(social3)
             elif i == 4:
-                culture3 = tr.summarize(0.2)
+                culture3 = result
                 print(culture3)
             elif i == 5:
-                world3 = tr.summarize(0.2)
+                world3 = result
                 print(world3)
             elif i == 6:
-                IT3 = tr.summarize(0.2)
+                IT3 = result
                 print(IT3)
         if j == 4:
             if i == 1:
-                politic4 = tr.summarize(0.2)
+                politic4 = result
                 print(politic4)
             elif i == 2:
-                economy4 = tr.summarize(0.2)
+                economy4 = result
                 print(economy4)
             elif i == 3:
-                social4 = tr.summarize(0.2)
+                social4 = result
                 print(social4)
             elif i == 4:
-                culture4 = tr.summarize(0.2)
+                culture4 = result
                 print(culture4)
             elif i == 5:
-                world4 = tr.summarize(0.2)
+                world4 = result
                 print(world4)
             elif i == 6:
-                IT4 = tr.summarize(0.2)
+                IT4 = result
                 print(IT4)
         if j == 5:
             if i == 1:
-                politic5 = tr.summarize(0.2)
+                politic5 = result
                 print(politic5)
             elif i == 2:
-                economy5 = tr.summarize(0.2)
+                economy5 = result
                 print(economy5)
             elif i == 3:
-                social5 = tr.summarize(0.2)
+                social5 = result
                 print(social5)
             elif i == 4:
-                culture5 = tr.summarize(0.2)
+                culture5 = result
                 print(culture5)
             elif i == 5:
-                world5 = tr.summarize(0.2)
+                world5 = result
                 print(world5)
             elif i == 6:
-                IT5 = tr.summarize(0.2)
+                IT5 = result
                 print(IT5)
-
-        # firebase.post('/', {'text{0}'.format(i): tr.summarize(0.1)})
