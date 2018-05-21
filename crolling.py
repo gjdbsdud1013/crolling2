@@ -44,16 +44,22 @@ for list in link_list1[:6]: # lank1
 
     if count == 1:
         politic_link1 = link
+        politic_title1 = title
     elif count == 2:
         economy_link1 = link
+        economy_title1 = title
     elif count == 3:
         social_link1 = link
+        social_title1 = title
     elif count == 4:
         culture_link1 = link
+        culture_title1 = title
     elif count == 5:
         world_link1 = link
+        world_title1 = title
     elif count == 6:
         IT_link1 = link
+        IT_title1 = title
     count=count+1
     response = urllib.request.urlopen(link)
 
